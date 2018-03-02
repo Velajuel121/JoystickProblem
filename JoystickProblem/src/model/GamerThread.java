@@ -9,6 +9,17 @@ package model;
  *
  * @author Alen
  */
-public class GamerThread {
+public class GamerThread implements Runnable{
+
+    private Gamer gamer;
+    public GamerThread(Gamer gamer){
+        this.gamer = gamer;
+    }
+    @Override
+    public void run() {
+        while(true){
+            
+        }
+    }
     
 }

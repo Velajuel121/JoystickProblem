@@ -10,5 +10,7 @@ package model;
  * @author Alen
  */
 public class JoyStick {
+    public synchronized void use(){
+    }
     
 }
