@@ -10,7 +10,12 @@ package model;
  * @author Alen
  */
 public class JoyStick {
-    public synchronized void use(){
-    }
+    private boolean joystick = false;
     
+    public synchronized void use(){
+        this.joystick = true;
+    }
+    public synchronized void release(){
+        this.joystick = false;
+    }
 }

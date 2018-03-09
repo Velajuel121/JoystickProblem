@@ -13,21 +13,36 @@ public class Gamer {
     private JoyStick leftJoyStick;
     private JoyStick rightJoyStick;
     private int id;
+
+    public JoyStick getLeftJoyStick() {
+        return leftJoyStick;
+    }
+
+    public JoyStick getRightJoyStick() {
+        return rightJoyStick;
+    }
     private int allGamers = 5;
     public Gamer(int id){
         this.id = id;
     }
-    private void inQueue(){
-        
+    public Gamer(JoyStick left,JoyStick right){
+        this.leftJoyStick = left;
+        this.rightJoyStick = right;
     }
-    private void takeJoyStick(){
-        
+    public void takeJoyStick(String type){
+        if("left".equals(type))
+            leftJoyStick.use();
+        else if("right".equals(type)){
+            rightJoyStick.use();
+        }
     }
-    private void game(){
-        
-    }
-    private void freeJoyStick(){
-        
+    public void freeJoyStick(String type){
+        if("left".equals(type)){
+            leftJoyStick.release();
+        }
+        if("right".equals(type)){
+            rightJoyStick.release();
+        }
     }
     
 }
