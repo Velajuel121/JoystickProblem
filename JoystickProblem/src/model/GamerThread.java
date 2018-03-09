@@ -54,14 +54,23 @@ public class GamerThread implements Runnable{
         }
     }
     public void doAction(String action) throws InterruptedException{
+<<<<<<< HEAD
         Platform.runLater(new Runnable(){ @Override public void run(){
             text.appendText(name + " " + action +"\n");
+=======
+        Platform.runLater(new Runnable() { @Override public void run(){
+         text.appendText(name + " " + action + "\n");
+>>>>>>> master
             try {
                 Thread.sleep(16);
             } catch (InterruptedException ex) {
                 Logger.getLogger(GamerThread.class.getName()).log(Level.SEVERE, null, ex);
             }
+<<<<<<< HEAD
         }});
+=======
+    }});
+>>>>>>> master
         Thread.sleep(((int) (Math.random() * 100)));
     }
     

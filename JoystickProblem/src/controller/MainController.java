@@ -30,6 +30,10 @@ public class MainController implements Initializable {
 
     @FXML
     private TextArea textArea;
+
+    public TextArea getTextArea() {
+        return textArea;
+    }
     @FXML
     private ImageView view5;
     @FXML
@@ -75,7 +79,7 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         initializeScreens();
         Gamer[] gamers = initializeGamers();
-           textArea.setText("");
+        textArea.setText("");
         JoyStick[] joySticks = initializeJoySticks();
         GamerThread[] gamerThreads = new GamerThread[5];
         for(int i = 0; i < gamers.length; i++){
@@ -86,8 +90,13 @@ public class MainController implements Initializable {
             }else{
                 gamers[i] = new Gamer(left,right);
             }
+<<<<<<< HEAD
             gamerThreads[i] = new GamerThread(gamers[i], "Gamers " + (i+1),textArea);
             Thread t = new Thread(gamerThreads[i], "Gamers " + (i+1));
+=======
+            gamerThreads[i] = new GamerThread(gamers[i], "Gamer " + (i+1),textArea);
+            Thread t = new Thread(gamerThreads[i], "Gamer " + (i+1));
+>>>>>>> master
             t.start();
         }
     }
@@ -120,7 +129,6 @@ public class MainController implements Initializable {
         Image imgGreen = null;
         Image imgJoystick = null;
         try {
-            //ressourceUrl = this.getClass().getResourceAsStream("/graphics/RoterBildschirm.png");#
             imgRed = new Image("https://abload.de/img/roterbildschirmmwkr4.png");
             imgGreen = new Image("https://abload.de/img/grnerbildschirm7tk2q.png");
             imgJoystick = new Image("https://abload.de/img/joystick8ikik.png");
