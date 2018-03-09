@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Gamer;
 import model.GamerThread;
@@ -32,7 +35,7 @@ public class MainController implements Initializable {
         return textArea;
     }
     @FXML
-    private ImageView view;
+    private ImageView view5;
     @FXML
     private ImageView view1;
     @FXML
@@ -63,6 +66,10 @@ public class MainController implements Initializable {
     private ImageView greenLeftTop;
     
     
+    
+    private ImageView[] redScreens;
+    private ImageView[] greenScreens;
+    private ImageView[] joysticks;
     /**
      * Initializes the controller class.
      * @param url
@@ -70,6 +77,7 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        initializeScreens();
         Gamer[] gamers = initializeGamers();
         textArea.setText("");
         JoyStick[] joySticks = initializeJoySticks();
@@ -108,5 +116,31 @@ public class MainController implements Initializable {
     }
     public void writeInLog(String text){
         textArea.appendText(text);
+    }
+    
+    public void initializeScreens(){
+        InputStream ressourceUrl = null;
+        Image imgRed = null;
+        Image imgGreen = null;
+        Image imgJoystick = null;
+        try {
+            imgRed = new Image("https://abload.de/img/roterbildschirmmwkr4.png");
+            imgGreen = new Image("https://abload.de/img/grnerbildschirm7tk2q.png");
+            imgJoystick = new Image("https://abload.de/img/joystick8ikik.png");
+        } catch (Exception e) {
+            System.out.println("Bild nicht gefunden");
+        }
+        this.redScreens = new ImageView[] {view1,view2,view3,view4,view5};
+        this.greenScreens = new ImageView[] {greenLeftBottom,greenLeftTop,greenRightBottom,greenRightTop,greenTop};
+        this.joysticks = new ImageView[] {joyLeftTop,joyLeftBottom,joyRightTop,joyRightBottom,joyBottom};
+        for(ImageView iv : redScreens){
+            iv.setImage(imgRed);
+        }
+        for(ImageView iv : greenScreens){
+            iv.setImage(imgGreen);
+        }
+        for(ImageView iv : joysticks){
+            iv.setImage(imgJoystick);
+        }
     }
 }

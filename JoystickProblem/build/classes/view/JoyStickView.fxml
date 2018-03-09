@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Circle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <bottom>
       <TextArea fx:id="textArea" editable="false" prefHeight="73.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </bottom>
@@ -16,7 +18,7 @@
          <children>
             <Circle fill="DODGERBLUE" layoutX="459.0" layoutY="283.0" radius="252.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="WHITE" layoutX="459.0" layoutY="282.0" radius="117.0" stroke="BLACK" strokeType="INSIDE" />
-            <ImageView fx:id="view" fitHeight="60.0" fitWidth="80.0" layoutX="438.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="view5" fitHeight="60.0" fitWidth="80.0" layoutX="438.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Grafiken/RoterBildschirm.png" />
                </image>
@@ -41,9 +43,9 @@
                   <Image url="@../../../Grafiken/RoterBildschirm.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="joyLeftBottom" fitHeight="66.0" fitWidth="51.0" layoutX="262.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="joyLeftBottom" fitHeight="66.0" fitWidth="51.0" layoutX="262.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Grafiken/Joystick.png" />
+                  <Image url="file:/C:/Users/felix/Desktop/Java2/JoystickProblem/JoystickProblem/Grafiken/Joystick.png" />
                </image>
             </ImageView>
             <ImageView fx:id="joyRightBottom" fitHeight="66.0" fitWidth="51.0" layoutX="606.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
