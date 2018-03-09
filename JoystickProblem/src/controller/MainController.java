@@ -65,6 +65,7 @@ public class MainController implements Initializable {
     
     private ImageView[] redScreens;
     private ImageView[] greenScreens;
+    private ImageView[] joysticks;
     /**
      * Initializes the controller class.
      * @param url
@@ -115,24 +116,28 @@ public class MainController implements Initializable {
     
     public void initializeScreens(){
         InputStream ressourceUrl = null;
-        Image img = null;
+        Image imgRed = null;
+        Image imgGreen = null;
+        Image imgJoystick = null;
         try {
             //ressourceUrl = this.getClass().getResourceAsStream("/graphics/RoterBildschirm.png");#
-            img = new Image("http://mikecann.co.uk/wp-content/uploads/2009/12/javafx_logo_color_1.jpg");
-            
+            imgRed = new Image("https://abload.de/img/roterbildschirmmwkr4.png");
+            imgGreen = new Image("https://abload.de/img/grnerbildschirm7tk2q.png");
+            imgJoystick = new Image("https://abload.de/img/joystick8ikik.png");
         } catch (Exception e) {
             System.out.println("Bild nicht gefunden");
         }
-        ImageView[] redScreens = new ImageView[] {view1,view2,view3,view4,view5};
-            ImageView[] greenScreens = new ImageView[] {greenLeftBottom,greenLeftTop,greenRightBottom,greenRightTop,greenTop};
-//            for(ImageView iv : redScreens){
-//                iv.setImage(img);
-//            }
-//            for(ImageView iv : greenScreens){
-//                iv.setImage(img);
-//            }
-            view1.setImage(img);
-//            
-//        System.exit(0);
+        this.redScreens = new ImageView[] {view1,view2,view3,view4,view5};
+        this.greenScreens = new ImageView[] {greenLeftBottom,greenLeftTop,greenRightBottom,greenRightTop,greenTop};
+        this.joysticks = new ImageView[] {joyLeftTop,joyLeftBottom,joyRightTop,joyRightBottom,joyBottom};
+        for(ImageView iv : redScreens){
+            iv.setImage(imgRed);
+        }
+        for(ImageView iv : greenScreens){
+            iv.setImage(imgGreen);
+        }
+        for(ImageView iv : joysticks){
+            iv.setImage(imgJoystick);
+        }
     }
 }
