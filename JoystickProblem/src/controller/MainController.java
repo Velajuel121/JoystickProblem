@@ -90,8 +90,18 @@ public class MainController implements Initializable {
             }else{
                 gamers[i] = new Gamer(left,right);
             }
+<<<<<<< HEAD
             gamerThreads[i] = new GamerThread(gamers[i], "Gamer " + (i+1),textArea);
             Thread t = new Thread(gamerThreads[i], "Gamer " + (i+1));
+=======
+<<<<<<< HEAD
+            gamerThreads[i] = new GamerThread(gamers[i], "Gamers " + (i+1),textArea);
+            Thread t = new Thread(gamerThreads[i], "Gamers " + (i+1));
+=======
+            gamerThreads[i] = new GamerThread(gamers[i], "Gamer " + (i+1),textArea);
+            Thread t = new Thread(gamerThreads[i], "Gamer " + (i+1));
+>>>>>>> master
+>>>>>>> master
             t.start();
         }
     }
