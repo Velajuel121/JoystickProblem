@@ -31,11 +31,6 @@ public class GamerThread implements Runnable{
         while(true){
             try {
                 doAction(System.nanoTime() + ": Waiting");
-                /*gamer.takeJoyStick("left");
-                gamer.takeJoyStick("right");
-                gamer.freeJoyStick("right");
-                gamer.freeJoyStick("left");
-*/
                 synchronized(leftjoy){
                     doAction(System.nanoTime() + ": Took the left JoyStick");
                     gamer.takeJoyStick("left");
@@ -56,9 +51,7 @@ public class GamerThread implements Runnable{
         }
     }
     public void doAction(String action) throws InterruptedException{
-        Platform.runLater(() -> {
-            MainController.getInstance().writeInLog((Thread.currentThread().getName() + " " + action));
-        });
+        System.out.println((name + " " + action));
         Thread.sleep(((int) (Math.random() * 100)));
     }
     

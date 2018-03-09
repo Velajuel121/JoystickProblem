@@ -29,18 +29,11 @@ public class MainController implements Initializable {
     @FXML
     private TextArea textArea;
     
-    private static MainController instance;
     
-    private MainController() {};
-    public static MainController getInstance(){
-        if(instance == null){
-           instance = new MainController();
-        }
-        return instance;
-    }
     /**
      * Initializes the controller class.
      * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -53,11 +46,12 @@ public class MainController implements Initializable {
             JoyStick right = joySticks[(i+1) % joySticks.length];
             if(i==gamers.length-1){
                 gamers[i] = new Gamer(right,left);
-            } else{
+            }else{
                 gamers[i] = new Gamer(left,right);
             }
             gamerThreads[i] = new GamerThread(gamers[i], "Gamers " + (i+1));
-            gamerThreads[i].run();
+            Thread t = new Thread(gamerThreads[i], "Gamers " + (i+1));
+            t.start();
         }
      
     }
