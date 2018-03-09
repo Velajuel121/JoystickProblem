@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import model.Gamer;
 import model.GamerThread;
 import model.JoyStick;
@@ -25,9 +26,37 @@ import model.JoyStick;
 public class MainController implements Initializable {
 
     @FXML
-    private Label label;
-    @FXML
     private TextArea textArea;
+    @FXML
+    private ImageView view;
+    @FXML
+    private ImageView view1;
+    @FXML
+    private ImageView view2;
+    @FXML
+    private ImageView view3;
+    @FXML
+    private ImageView view4;
+    @FXML
+    private ImageView joyLeftBottom;
+    @FXML
+    private ImageView joyRightBottom;
+    @FXML
+    private ImageView joyRightTop;
+    @FXML
+    private ImageView joyLeftTop;
+    @FXML
+    private ImageView joyBottom;
+    @FXML
+    private ImageView greenRightTop;
+    @FXML
+    private ImageView greenRightBottom;
+    @FXML
+    private ImageView greenLeftBottom;
+    @FXML
+    private ImageView greenTop;
+    @FXML
+    private ImageView greenLeftTop;
     
     
     /**
