@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Gamer;
 import model.GamerThread;
@@ -28,7 +31,7 @@ public class MainController implements Initializable {
     @FXML
     private TextArea textArea;
     @FXML
-    private ImageView view;
+    private ImageView view5;
     @FXML
     private ImageView view1;
     @FXML
@@ -59,6 +62,9 @@ public class MainController implements Initializable {
     private ImageView greenLeftTop;
     
     
+    
+    private ImageView[] redScreens;
+    private ImageView[] greenScreens;
     /**
      * Initializes the controller class.
      * @param url
@@ -66,6 +72,7 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        initializeScreens();
         Gamer[] gamers = initializeGamers();
            textArea.setText("");
         JoyStick[] joySticks = initializeJoySticks();
@@ -82,7 +89,6 @@ public class MainController implements Initializable {
             Thread t = new Thread(gamerThreads[i], "Gamers " + (i+1));
             t.start();
         }
-     
     }
     private Gamer[] initializeGamers(){
         Gamer gamerOne = new Gamer(1);
@@ -105,5 +111,28 @@ public class MainController implements Initializable {
     }
     public void writeInLog(String text){
         textArea.appendText(text);
+    }
+    
+    public void initializeScreens(){
+        InputStream ressourceUrl = null;
+        Image img = null;
+        try {
+            //ressourceUrl = this.getClass().getResourceAsStream("/graphics/RoterBildschirm.png");#
+            img = new Image("http://mikecann.co.uk/wp-content/uploads/2009/12/javafx_logo_color_1.jpg");
+            
+        } catch (Exception e) {
+            System.out.println("Bild nicht gefunden");
+        }
+        ImageView[] redScreens = new ImageView[] {view1,view2,view3,view4,view5};
+            ImageView[] greenScreens = new ImageView[] {greenLeftBottom,greenLeftTop,greenRightBottom,greenRightTop,greenTop};
+//            for(ImageView iv : redScreens){
+//                iv.setImage(img);
+//            }
+//            for(ImageView iv : greenScreens){
+//                iv.setImage(img);
+//            }
+            view1.setImage(img);
+//            
+//        System.exit(0);
     }
 }
