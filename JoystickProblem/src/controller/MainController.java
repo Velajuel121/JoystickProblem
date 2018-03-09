@@ -86,7 +86,7 @@ public class MainController implements Initializable {
             }else{
                 gamers[i] = new Gamer(left,right);
             }
-            gamerThreads[i] = new GamerThread(gamers[i], "Gamers " + (i+1));
+            gamerThreads[i] = new GamerThread(gamers[i], "Gamers " + (i+1),textArea);
             Thread t = new Thread(gamerThreads[i], "Gamers " + (i+1));
             t.start();
         }

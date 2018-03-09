@@ -9,6 +9,7 @@ import controller.MainController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.scene.control.TextArea;
 
 /**
  *
@@ -20,27 +21,29 @@ public class GamerThread implements Runnable{
     private final String name;
     private final Object leftjoy;
     private final Object rightjoy;
-    public GamerThread(Gamer gamer,String name){
+    private TextArea text;
+    public GamerThread(Gamer gamer,String name,TextArea text){
         this.gamer = gamer;
         this.name = name;
         this.leftjoy = gamer.getLeftJoyStick();
         this.rightjoy = gamer.getRightJoyStick();
+        this.text = text;
     }
     @Override
     public void run() {
         while(true){
             try {
-                doAction(System.nanoTime() + ": Waiting");
+                doAction(": Waiting");
                 synchronized(leftjoy){
-                    doAction(System.nanoTime() + ": Took the left JoyStick");
+                    doAction(": Took the left JoyStick");
                     gamer.takeJoyStick("left");
                     synchronized(rightjoy){
-                        doAction(System.nanoTime() + ": Took the right JoyStick");
+                        doAction(": Took the right JoyStick");
                         gamer.takeJoyStick("right");
-                        doAction(System.nanoTime() + ": Freed right JoyStick");
+                        doAction(": Freed right JoyStick");
                         gamer.freeJoyStick("right");
                     }
-                    doAction(System.nanoTime() + ": Freed left JoyStick");
+                    doAction(": Freed left JoyStick");
                     gamer.freeJoyStick("left");
                 }
             } catch (InterruptedException ex) {
@@ -51,7 +54,14 @@ public class GamerThread implements Runnable{
         }
     }
     public void doAction(String action) throws InterruptedException{
-        System.out.println((name + " " + action));
+        Platform.runLater(new Runnable(){ @Override public void run(){
+            text.appendText(name + " " + action +"\n");
+            try {
+                Thread.sleep(16);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GamerThread.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }});
         Thread.sleep(((int) (Math.random() * 100)));
     }
     
