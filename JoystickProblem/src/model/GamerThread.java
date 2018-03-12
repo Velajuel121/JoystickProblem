@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -22,12 +23,16 @@ public class GamerThread implements Runnable{
     private final Object leftjoy;
     private final Object rightjoy;
     private TextArea text;
-    public GamerThread(Gamer gamer,String name,TextArea text){
+    private ImageView[] red;
+    private ImageView[] green;
+    public GamerThread(Gamer gamer,String name,TextArea text,ImageView[] red, ImageView[] green){
         this.gamer = gamer;
         this.name = name;
         this.leftjoy = gamer.getLeftJoyStick();
         this.rightjoy = gamer.getRightJoyStick();
         this.text = text;
+        this.red = red;
+        this.green = green;
     }
     @Override
     public void run() {
@@ -40,8 +45,16 @@ public class GamerThread implements Runnable{
                     synchronized(rightjoy){
                         doAction(": Took the right JoyStick");
                         gamer.takeJoyStick("right");
+                        doAction(": Games");
+                        Platform.runLater(new Runnable() { @Override public void run(){
+                            green[gamer.getId()].setVisible(true);
+                        }});
+                        Thread.sleep(1000);
                         doAction(": Freed right JoyStick");
                         gamer.freeJoyStick("right");
+                        Platform.runLater(new Runnable() { @Override public void run(){
+                            green[gamer.getId()].setVisible(false);
+                        }});
                     }
                     doAction(": Freed left JoyStick");
                     gamer.freeJoyStick("left");
@@ -54,33 +67,15 @@ public class GamerThread implements Runnable{
         }
     }
     public void doAction(String action) throws InterruptedException{
-<<<<<<< HEAD
         Platform.runLater(new Runnable() { @Override public void run(){
          text.appendText(name + " " + action + "\n");
-=======
-<<<<<<< HEAD
-        Platform.runLater(new Runnable(){ @Override public void run(){
-            text.appendText(name + " " + action +"\n");
-=======
-        Platform.runLater(new Runnable() { @Override public void run(){
-         text.appendText(name + " " + action + "\n");
->>>>>>> master
->>>>>>> master
             try {
                 Thread.sleep(16);
             } catch (InterruptedException ex) {
-                Logger.getLogger(GamerThread.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Huhu");
             }
-<<<<<<< HEAD
-    }});
-=======
-<<<<<<< HEAD
-        }});
-=======
-    }});
->>>>>>> master
->>>>>>> master
-        Thread.sleep(((int) (Math.random() * 100)));
+        }
+    });
+    Thread.sleep(((int) (Math.random() * 100)));
     }
-    
 }

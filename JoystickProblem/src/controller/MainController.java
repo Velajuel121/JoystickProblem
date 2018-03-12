@@ -86,31 +86,21 @@ public class MainController implements Initializable {
             JoyStick left = joySticks[i];
             JoyStick right = joySticks[(i+1) % joySticks.length];
             if(i==gamers.length-1){
-                gamers[i] = new Gamer(right,left);
+                gamers[i] = new Gamer(right,left,i);
             }else{
-                gamers[i] = new Gamer(left,right);
+                gamers[i] = new Gamer(left,right,i);
             }
-<<<<<<< HEAD
-            gamerThreads[i] = new GamerThread(gamers[i], "Gamer " + (i+1),textArea);
+            gamerThreads[i] = new GamerThread(gamers[i], "Gamer " + (i+1),textArea,redScreens,greenScreens);
             Thread t = new Thread(gamerThreads[i], "Gamer " + (i+1));
-=======
-<<<<<<< HEAD
-            gamerThreads[i] = new GamerThread(gamers[i], "Gamers " + (i+1),textArea);
-            Thread t = new Thread(gamerThreads[i], "Gamers " + (i+1));
-=======
-            gamerThreads[i] = new GamerThread(gamers[i], "Gamer " + (i+1),textArea);
-            Thread t = new Thread(gamerThreads[i], "Gamer " + (i+1));
->>>>>>> master
->>>>>>> master
             t.start();
         }
     }
     private Gamer[] initializeGamers(){
-        Gamer gamerOne = new Gamer(1);
-        Gamer gamerTwo = new Gamer(2);
-        Gamer gamerThree = new Gamer(3);
-        Gamer gamerFour = new Gamer(4);
-        Gamer gamerFive = new Gamer(5);
+        Gamer gamerOne = new Gamer(0);
+        Gamer gamerTwo = new Gamer(1);
+        Gamer gamerThree = new Gamer(2);
+        Gamer gamerFour = new Gamer(3);
+        Gamer gamerFive = new Gamer(4);
         Gamer[] gamers = new Gamer[] {gamerOne,gamerTwo,gamerThree,gamerFour,gamerFive};
         return gamers;
     }
@@ -141,7 +131,7 @@ public class MainController implements Initializable {
             System.out.println("Bild nicht gefunden");
         }
         this.redScreens = new ImageView[] {view1,view2,view3,view4,view5};
-        this.greenScreens = new ImageView[] {greenLeftBottom,greenLeftTop,greenRightBottom,greenRightTop,greenTop};
+        this.greenScreens = new ImageView[] {greenLeftBottom,greenLeftTop,greenTop,greenRightTop,greenRightBottom};
         this.joysticks = new ImageView[] {joyLeftTop,joyLeftBottom,joyRightTop,joyRightBottom,joyBottom};
         for(ImageView iv : redScreens){
             iv.setImage(imgRed);

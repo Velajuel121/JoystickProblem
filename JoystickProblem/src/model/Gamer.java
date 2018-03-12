@@ -14,6 +14,10 @@ public class Gamer {
     private JoyStick rightJoyStick;
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     public JoyStick getLeftJoyStick() {
         return leftJoyStick;
     }
@@ -25,9 +29,10 @@ public class Gamer {
     public Gamer(int id){
         this.id = id;
     }
-    public Gamer(JoyStick left,JoyStick right){
+    public Gamer(JoyStick left,JoyStick right,int id){
         this.leftJoyStick = left;
         this.rightJoyStick = right;
+        this.id = id;
     }
     public void takeJoyStick(String type){
         if("left".equals(type))
